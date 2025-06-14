@@ -25,11 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Header />
       <body className={`${spaceGrotesk.variable} antialiased `}>
-        <main className="bg-main-primary lg:h-screen">{children}</main>
+        <Header />
+        <main className="bg-main-primary ">{children}</main>
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }
