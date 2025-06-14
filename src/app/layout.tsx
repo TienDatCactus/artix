@@ -1,8 +1,15 @@
+import {
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Tooltip } from "@radix-ui/react-tooltip";
+import { Mouse } from "lucide-react";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import "./globals.css";
-import Header from "./_components/layout/header";
 import Footer from "./_components/layout/footer";
+import Header from "./_components/layout/header";
+import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -24,12 +31,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${spaceGrotesk.variable} antialiased `}>
-        <Header />
-        <main className="bg-main-primary ">{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <TooltipProvider>
+      <html lang="en">
+        <body className={`${spaceGrotesk.variable} antialiased relative`}>
+          <Header />
+          <main className="bg-main-primary ">{children}</main>
+          <Footer />
+          <Tooltip>
+            <TooltipTrigger className="fixed flex items-center justify-center lg:bottom-6 lg:right-6 z-20 hover:bg-true-primary/80 text-white rounded-full cursor-pointer lg:size-14 group">
+              <a href="#hero" className="hidden lg:block">
+                <Mouse className="text-true-primary group-hover:text-white lg:size-8 " />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent>Cuộn lên đầu</TooltipContent>
+          </Tooltip>
+        </body>
+      </html>
+    </TooltipProvider>
   );
 }

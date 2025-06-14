@@ -1,6 +1,6 @@
 import { About, Contact, Hero, Series, Services } from "./_components/pages";
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Hero />

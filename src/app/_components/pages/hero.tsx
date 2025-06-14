@@ -1,9 +1,11 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
+import { motion } from "motion/react";
 const Hero: React.FC = () => {
   return (
-    <section className="lg:h-160 max-w-[125rem] mx-auto relative z-0">
+    <section id="hero" className="lg:h-160 max-w-[125rem] mx-auto relative z-0">
       <Image
         src="/images/gradients/rectangle.png"
         alt="Series Banner"
@@ -31,7 +33,12 @@ const Hero: React.FC = () => {
         className="object-cover h-auto lg:w-140 absolute lg:top-20 lg:right-30 -z-10"
         loading="lazy"
       />
-      <div className="z-30 absolute lg:top-30 lg:left-20 text-start text-white lg:w-180 space-y-4">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="z-30 absolute lg:top-30 lg:left-20 text-start text-white lg:w-180 space-y-4"
+      >
         <h1 className="lg:text-3xl font-extralight">Tại Artix</h1>
         <h2 className="lg:text-6xl lg:leading-snug">
           MỖI NHÂN VẬT LÀ MỘT CÂU CHUYỆN ĐANG CHỜ BẠN HOÀN THIỆN
@@ -42,8 +49,13 @@ const Hero: React.FC = () => {
         >
           ORDER NGAY
         </Button>
-      </div>
-      <div className="relative">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative"
+      >
         <Image
           src="/images/figures/fig-1.png"
           alt="Series Figure"
@@ -62,7 +74,7 @@ const Hero: React.FC = () => {
           className="object-cover h-auto lg:w-150 absolute lg:top-0 lg:right-10 z-0"
           loading="lazy"
         />
-      </div>
+      </motion.div>
     </section>
   );
 };
