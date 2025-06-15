@@ -1,13 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
 import Image from "next/image";
 import React from "react";
-import { motion } from "motion/react";
 const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="lg:px-20 max-w-[125rem] mx-auto lg:pb-20 lg:pt-10 relative"
+      className="lg:px-20 max-w-[125rem] mx-auto lg:pb-20 pt-10 relative"
     >
       <Image
         src="/images/gradients/pink.png"
@@ -22,17 +22,19 @@ const Services: React.FC = () => {
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center text-white mx-auto lg:pb-20 lg:space-y-10"
+        className="text-center px-10 text-white mx-auto pb-10 space-y-4 lg:pb-20 lg:space-y-10"
       >
-        <h1 className="font-bold lg:text-8xl">DỊCH VỤ THIẾT KẾ VÀ IN 3D</h1>
-        <p className="lg:w-4/7 font-light mx-auto lg:text-2xl">
+        <h1 className="font-bold text-4xl lg:text-8xl">
+          DỊCH VỤ THIẾT KẾ VÀ IN 3D
+        </h1>
+        <p className="lg:w-4/7  font-light mx-auto lg:text-2xl">
           Artix chuyên dịch vụ trọn gói Thiết kế - In - Sơn 3D. Bằng công nghệ
           hiện đại và kỹ thuật sơn nghệ thuật, chúng tôi biến ý tưởng của bạn
           thành tác phẩm 3D sắc nét và sống động.
         </p>
       </motion.div>
-      <div className="grid grid-cols-2 grid-rows-2 lg:gap-10 ">
-        <div className="row-span-3  lg:space-y-10">
+      <div className="grid grid-cols-2 grid-rows-2 gap-4 lg:gap-10 ">
+        <div className="row-span-3 space-y-4 lg:space-y-10">
           <Image
             src="/images/figures/zombie-hand.png"
             alt="Zombie Hand"
@@ -51,7 +53,7 @@ const Services: React.FC = () => {
             className="lg:w-full lg:h-auto object-cover rounded-2xl"
           />
         </div>
-        <div className="row-span-3 lg:space-y-10 lg:pt-20">
+        <div className="row-span-3 space-y-4 pt-10 lg:space-y-10 lg:pt-20">
           <Image
             src="/images/figures/bomb.png"
             alt="Bomb Character"
@@ -74,18 +76,20 @@ const Services: React.FC = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col items-center justify-center lg:space-y-10 lg:py-20"
+        className="flex flex-col items-center justify-center lg:space-y-10 px-10 py-10 pb-20 lg:py-20"
       >
-        <p className="text-center text-white mx-auto py-10 lg:text-2xl lg:w-4/7">
+        <p className="text-center text-white mx-auto py-10 lg:text-2xl lg:w-4/7 ">
           Quy trình đơn giản – Chất lượng vượt trội – Sản phẩm độc bản. Hãy bắt
           đầu dự án của bạn với Artix ngay hôm nay.
         </p>
-        <Button
-          variant={"default"}
-          className=" text-4xl text-white bg-true-primary hover:text-white hover:bg-transparent border-2 border-true-primary rounded-full cursor-pointer lg:p-10"
-        >
-          ORDER NGAY
-        </Button>
+        <a href="#contact" className="block">
+          <Button
+            variant={"default"}
+            className="lg:text-4xl text-2xl p-6 text-white bg-true-primary hover:text-white hover:bg-transparent border-2 border-true-primary rounded-full cursor-pointer lg:p-10"
+          >
+            ORDER NGAY
+          </Button>
+        </a>
       </motion.div>
       <div className="w-3/4 border-2 border-white mx-auto z-10" />
     </section>

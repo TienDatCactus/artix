@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
   return (
     <section
       id="contact"
-      className="max-w-[125rem] mx-auto lg:px-20 lg:pb-20 relative z-20"
+      className="max-w-[125rem] mx-auto lg:px-20 pb-20 lg:py-20 relative z-20"
     >
       <motion.div
         drag
@@ -59,9 +59,9 @@ const Contact: React.FC = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-neutral-50 lg:w-1/2 mx-auto p-8 rounded-lg shadow-lg z-20 cursor-grab"
+        className="bg-neutral-50 lg:w-1/2 w-90 mx-auto p-8 rounded-lg shadow-lg z-20 cursor-grab"
       >
-        <div className="text-center lg:pb-6">
+        <div className="text-center  pb-6">
           <h1 className="text-true-primary text-4xl font-semibold">
             ORDER NGAY
           </h1>
