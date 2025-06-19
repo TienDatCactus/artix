@@ -10,7 +10,6 @@ export const FlipCard = ({
   subtitle = "Click to flip",
   imageSrc = "/images/gradients/orange-halo-1.png",
   description = <p></p>,
-  sol = false,
 }) => {
   const [flipped, setFlipped] = useState(false);
 
@@ -27,11 +26,6 @@ export const FlipCard = ({
         {/* Front */}
         <div className="backface-hidden w-full h-full absolute">
           <div className="w-full h-full relative">
-            {sol && (
-              <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl">
-                ?
-              </p>
-            )}
             <Image
               src={imageSrc}
               alt={title}
@@ -47,8 +41,8 @@ export const FlipCard = ({
           className="absolute p-4 w-full h-full backface-hidden bg-main-primary/50 text-white rounded-xl shadow-md space-y-4"
           style={{ transform: "rotateY(180deg)" }}
         >
-          <h1 className="text-center font-bold text-3xl">{title}</h1>
-          <h2 className="text-center whitespace-pre-line">
+          <h1 className="text-center font-bold text-3xl ">{title}</h1>
+          <h2 className="text-center text-xl whitespace-pre-line w-3/4 wrap-break-word  mx-auto my-4">
             <i>{subtitle}</i>
           </h2>
           {description}

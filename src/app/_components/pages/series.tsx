@@ -8,7 +8,7 @@ const Series: React.FC = () => {
   return (
     <section
       id="series"
-      className="lg:px-20 max-w-[125rem] mx-auto py-10 lg:py-40 relative z-20"
+      className="lg:px-20 max-w-[125rem] mx-auto py-10 lg:py-40 relative z-30"
     >
       <Image
         src="/images/gradients/orange-halo-3.png"
@@ -75,24 +75,24 @@ const Series: React.FC = () => {
         >
           <h1 className="lg:text-8xl font-medium text-center">Nox</h1>
           <h2 className="lg:text-3xl lg:w-2/3 mx-auto text-center">
-            <i>“Một nửa còn thiếu của thiên thần”</i>
+            <i>“Ngoại trừ Nox.”</i>
           </h2>
           <h3 className="lg:leading-loose lg:text-xl ">
-            Nox là ai? Đó là người như thế nào? Kẻ bí ấn đang lẩn trốn chờ ngày
-            xuất hiện.
+            Nox không đuổi theo ánh sáng đó. Cậu đơn giản là ở đó – bình lặng,
+            vững chãi, là nơi duy nhất Sol không cần chạy trốn hay chứng minh
+            điều gì.
+            <br /> <br />
+            Và có lẽ, chỉ khi ở bên Nox, Sol mới thật sự là chính mình – một nửa
+            của điều gì đó lớn hơn, trọn vẹn hơn.
           </h3>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative"
         >
-          <p className="absolute lg:top-1/2 lg:left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white lg:text-8xl">
-            ?
-          </p>
           <Image
-            src="/images/figures/sol1.png"
+            src="/images/figures/Nox.jpg"
             alt="Sol Figure"
             width={1000}
             quality={100}
@@ -122,13 +122,16 @@ const Series: React.FC = () => {
         />
         <FlipCard
           title="Nox"
-          subtitle="“Một nửa còn thiếu của thiên thần”"
-          imageSrc="/images/figures/sol1.png"
-          sol={true}
+          subtitle="“Ngoại trừ Nox.”"
+          imageSrc="/images/figures/Nox.jpg"
           description={
-            <p>
-              Nox là ai? Đó là người như thế nào? Kẻ bí ấn đang lẩn trốn chờ
-              ngày xuất hiện.
+            <p className="lg:leading-loose lg:text-xl ">
+              Nox không đuổi theo ánh sáng đó. Cậu đơn giản là ở đó – bình lặng,
+              vững chãi, là nơi duy nhất Sol không cần chạy trốn hay chứng minh
+              điều gì.
+              <br /> <br />
+              Và có lẽ, chỉ khi ở bên Nox, Sol mới thật sự là chính mình – một
+              nửa của điều gì đó lớn hơn, trọn vẹn hơn.
             </p>
           }
           key={"nox-flip-card"}

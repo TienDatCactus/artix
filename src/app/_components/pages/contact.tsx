@@ -11,11 +11,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "motion/react";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 const formSchema = z.object({
-  fullname: z.string().min(2, {
+  fullName: z.string().min(2, {
     message: "Họ và tên cần có ít nhất 2 kí tự.",
   }),
   email: z.string().email({
@@ -34,10 +34,12 @@ const formSchema = z.object({
   }),
 });
 const Contact: React.FC = () => {
+  const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullname: "",
+      fullName: "",
       email: "",
       phone: "",
       request: "",
@@ -45,7 +47,36 @@ const Contact: React.FC = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    setIsSubmitting(true);
+    setStatus("");
+
+    const url =
+      process.env.NEXT_PUBLIC_GOOGLE_APP_URL ||
+      "https://script.google.com/macros/s/AKfycby4w4TqGoY092MU9dAPznGscujYISyAWAgcBUfYffasV70K8RwWyJIRVxwHeCrhwFvGvg/exec";
+
+    // Create form data for the request
+    const formData = new FormData();
+    formData.append("fullName", values.fullName);
+    formData.append("email", values.email);
+    formData.append("phone", values.phone);
+    formData.append("request", values.request);
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors", // This is important for Google Apps Script
+    })
+      .then(() => {
+        setStatus("Gửi thành công!");
+        form.reset();
+      })
+      .catch((err) => {
+        console.error(err);
+        setStatus("Lỗi kết nối. Vui lòng thử lại sau.");
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   }
   return (
     <section
@@ -53,9 +84,6 @@ const Contact: React.FC = () => {
       className="max-w-[125rem] mx-auto lg:px-20 pb-20 lg:py-20 relative z-20"
     >
       <motion.div
-        drag
-        dragElastic={0.5}
-        whileDrag={{ scale: 1.1 }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -74,7 +102,7 @@ const Contact: React.FC = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="fullname"
+              name="fullName"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -134,12 +162,25 @@ const Contact: React.FC = () => {
                 </FormItem>
               )}
             />
+            {status && (
+              <div
+                className={`text-center p-2 rounded ${
+                  status.includes("thành công")
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
+                }`}
+              >
+                {status}
+              </div>
+            )}
             <div className="text-center lg:pt-6">
               <Button
                 variant={"default"}
-                className="text-xl text-white bg-true-primary hover:text-true-primary hover:bg-transparent border-2 border-true-primary rounded-full cursor-pointer lg:p-6 "
+                type="submit"
+                disabled={isSubmitting}
+                className="text-xl text-white bg-true-primary hover:text-true-primary hover:bg-transparent border-2 border-true-primary rounded-full cursor-pointer lg:p-6"
               >
-                GỬI NGAY
+                {isSubmitting ? "ĐANG GỬI..." : "GỬI NGAY"}
               </Button>
             </div>
           </form>

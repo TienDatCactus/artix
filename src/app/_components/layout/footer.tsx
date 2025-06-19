@@ -3,7 +3,7 @@ import React from "react";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-layout-primary lg:px-20 pt-10 px-10 lg:pt-10 ">
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-between w-full">
+      <div className="sm:grid grid-cols-1 lg:flex items-center justify-between w-full">
         <Image
           src="/icons/artix.svg"
           alt="Logo"

@@ -1,15 +1,15 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
 import Image from "next/image";
 import React from "react";
-import { motion } from "motion/react";
 const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="lg:h-160 h-120 max-w-[125rem] mx-auto relative z-0"
+      className="lg:h-160 h-120 max-w-[125rem] mx-auto relative z-30"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-transparent z-20" />
 
       <Image
         src="/images/gradients/rectangle.png"
@@ -42,9 +42,9 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className="z-30 absolute lg:top-30 top-50 lg:left-20 lg:text-start text-center text-white lg:w-180 w-4/5 transform -translate-x-1/2 left-1/2 lg:translate-x-0 space-y-4"
+        className="z-30 absolute lg:top-30 top-20 lg:left-20 lg:text-start text-center text-white lg:w-180 w-4/5 transform -translate-x-1/2 left-1/2 lg:translate-x-0 space-y-4"
       >
-        <h1 className="lg:text-3xl text-xl font-extralight">Tại Artix</h1>
+        <h1 className="lg:text-3xl text-2xl font-extralight">Tại Artix</h1>
         <h2 className="lg:text-6xl text-3xl lg:leading-snug">
           MỖI NHÂN VẬT LÀ MỘT CÂU CHUYỆN ĐANG CHỜ BẠN HOÀN THIỆN
         </h2>
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
           width={1000}
           height={1000}
           quality={100}
-          className="object-cover h-auto lg:w-150 w-80 absolute lg:top-28  lg:right-40 top-20 right-24 z-20"
+          className="object-cover h-auto lg:w-150 w-120 absolute lg:top-28 lg:right-40 top-40 right-20 z-10"
           loading="lazy"
         />
         <Image
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
           width={1000}
           height={1000}
           quality={100}
-          className="object-cover h-auto lg:w-150 w-80 absolute lg:top-0 lg:right-10 top-5 right-10 z-10"
+          className="object-cover h-auto lg:w-150 w-110 absolute lg:top-0 lg:right-10 top-22 right-0 z-0"
           loading="lazy"
         />
       </motion.div>
